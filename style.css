@@ -1,0 +1,30 @@
+.main-wrapper{
+  background-color: rgb(100, 237, 166);
+  height: 100vh;
+}
+
+.grid-container{
+  background-color: brown;
+  width: 800px;
+}
+
+.grid-container button{
+  width: 100%;
+  font-weight: 800;
+}
+
+.square{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 80px;
+  height: 80px;
+  background-color: rgba(121, 56, 200, 0.5);
+  border: 2px solid white;
+  color: white;
+  cursor: pointer;
+}
+
+.square.clicked{
+  background-color: rgb(0, 89, 255);
+}
