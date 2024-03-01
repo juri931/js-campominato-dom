@@ -1,46 +1,31 @@
-const gridContainer = document.querySelector(`.grid-container`);
+// Elements
+const main = document.getElementsByClassName('.main-wrapper');
+const playBtn = document.getElementById('play');
+const levelSelect = document.getElementById('level');
 
-const btn = document.querySelector(`.btn`);
+// DATA
+const levels = [100, 81, 49];
+let squareNumbers;
 
-btn.addEventListener('click', start);
+
+
+// Events
+playBtn.addEventListener( 'click', play);
+
 
 // Functions
-
-// Reset
-function reset(){
-  gridContainer.innerHTML = "";
-}
-
-// Inizio
-function start(){
+function play(){
 
   reset();
 
-  for (let i = 1; i <= 100; i++) {
-    const square = addSquare(i);
-    gridContainer.append(square);
-  }
+  squareNumbers = levels[levelSelect.value];
+
+  // Calcolo quadrati
+
+  // generatePlayground()
+
 }
 
-function addSquare(numero){
-  
-  const sq = document.createElement('div');
-  
-  sq.className = 'square';
-
-  sq._sqID = numero;
-  
-  sq.addEventListener('click', function(){
-    
-    console.log(this._sqID);
-    
-    this.innerHTML = (!this.classList.contains('clicked'))
-                      ? this.innerHTML = numero 
-                      : this.innerHTML = '';
-
-    this.classList.toggle('clicked');
-
-  });
-
-  return sq;
+function reset(){
+  main.innerHTML = '';
 }
