@@ -11,31 +11,36 @@
 <body>
 
   <header>
-    <nav class="d-flex justify-content-between align-content-center">
+    <nav class="row d-flex justify-content-between align-content-center">
   
-      <div><img src="img/smile.png" alt="smile" width="90px"></div>
+      <div class="col-4"><img src="img/smile.png" alt="smile" width="90px"></div>
 
-      <h1>Campo Minato</h1>
+      <h1 class="col-4 text-center">Campo Minato</h1>
   
-      <div class="difficulty-container">
-        <select class="dropdown mx-2">
+      <div class="col-4 text-end difficulty-container">
+        <label for="level">Difficoltà:</label>
+        <select class="dropdown" id="level">
           <option value="0" selected>Easy</option>
           <option value="1">Hard</option>
           <option value="2">Crazy</option>
         </select>
-        <button class="bg-success rounded-2 border-2">PLAY</button>
+        <button id="play" class="me-3 bg-success rounded-2 border-2">PLAY</button>
       </div>
     </nav>
   </header>
 
 
-  <div class="main-wrapper d-flex justify-content-center align-items-center">
+  <main class="main-wrapper d-flex justify-content-center align-items-center flex-grow-1 ">
     
-    <div class="grid-container d-flex flex-wrap flex-grow-0 flex-shrink-0 ">
-      <button class="btn d-flex justify-content-center fs-2">START</button>
+    <div class="grid-container justify-content-center d-flex flex-wrap flex-grow-0 flex-shrink-0 ">
+      <h1 class="text-center">Seleziona un livello di difficoltà e premi PLAY</h1>
     </div>
+
+    <h1 class="endGameMessage"></h1>
   
-  </div>
+  </main>
+
+  <footer></footer>
   
 
 
