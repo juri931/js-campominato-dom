@@ -18,21 +18,20 @@ button{
   color: rgb(0, 0, 0);
 }
 
-.grid-container{
-  align-content: center;
-  width: 700px;
-  height: 700px;
-}
-
-.grid-container button{
-  width: 100%;
-  font-weight: 800;
+.grid{
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 600px;
+  height: 600px;
 }
 
 .square{
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 80px;
+  height: 80px;
   background-color: rgba(121, 56, 200, 0.5);
   border: 2px solid white;
   color: white;

@@ -2,15 +2,14 @@
 const main = document.querySelector('.main-wrapper');
 const playBtn = document.getElementById('play');
 const levelSelect = document.getElementById('level');
+let grid = document.querySelector('.grid-container');
 
 // DATA
 const levels = [100, 81, 49];
 let squareNumbers;
 
-
-
 // Events
-playBtn.addEventListener( 'click', play);
+playBtn.addEventListener('click', play);
 
 
 // Functions
@@ -21,7 +20,7 @@ function play(){
 }
 
 function generatePlayground(){
-  const grid = document.createElement('div');
+  grid = document.createElement('div');
   grid.className = "grid";
   for(let i = 1; i <= squareNumbers; i++){
     const square = createSquare(i);
@@ -32,11 +31,11 @@ function generatePlayground(){
 
 function createSquare(index){
   const square = document.createElement('div');
-  square.className  = "square";
+  square.className  = 'square';
   square.classList.add('square' + squareNumbers);
   square._sqID = index;
   square.addEventListener('click', handleClick)
-  return square
+  return square;
 }
 
 function handleClick(){
