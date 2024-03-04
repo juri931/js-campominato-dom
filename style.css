@@ -59,5 +59,6 @@ button{
 
 .square.bomb{
   background-color: brown;
-  color: white;
+  background-image: url(img/photo.png);
+  background-size: contain;
 }
