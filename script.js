@@ -3,10 +3,13 @@ const main = document.querySelector('.main-wrapper');
 const playBtn = document.getElementById('play');
 const levelSelect = document.getElementById('level');
 let grid = document.querySelector('.grid-container');
+let points = 0;
+const numBombs = 16;
 
 // DATA
 const levels = [100, 81, 49];
 let squareNumbers;
+let bombs = [];
 
 // Events
 playBtn.addEventListener('click', play);
@@ -16,11 +19,21 @@ playBtn.addEventListener('click', play);
 function play(){
   reset();
   squareNumbers = levels[levelSelect.value];
+  bombs = generateBombs();
   generatePlayground();
 }
 
+function generateBombs(){
+  const bombsTemp = [];
+  while(bombsTemp.length < numBombs){
+    const bombId = Math.ceil(Math.random() * squareNumbers);
+    if(!bombsTemp.includes(bombId)) bombsTemp.push(bombId)
+  }
+  return bombsTemp;
+}
+
 function generatePlayground(){
-  grid = document.createElement('div');
+  const grid = document.createElement('div');
   grid.className = "grid";
   for(let i = 1; i <= squareNumbers; i++){
     const square = createSquare(i);
@@ -39,7 +52,32 @@ function createSquare(index){
 }
 
 function handleClick(){
-  this.classList.add('clicked')
+  if(bombs.includes(this._sqID)){
+    endGame();
+  }else{
+    this.classList.add('clicked');
+    if(!this.classList.contains('clicked')){
+      points++;
+    }
+    if(points === (squareNumbers - numBombs)){
+      endGame('WIN');
+    }
+  }
+}
+
+function endGame(status){
+  showBombs();
+  
+}
+
+function showBombs(){
+  const squares = document.querySelectorAll('.square');
+  for(let i = 0; i < squares.length; i++){
+    const square = squares[i];
+    if(bombs.includes(square._sqID)){
+      square.classList.add('bomb');
+    }
+  }
 }
 
 function reset(){
