@@ -5,7 +5,7 @@ const levelSelect = document.getElementById('level');
 let grid = document.querySelector('.grid-container');
 let points = 0;
 const numBombs = 16;
-const endMessage = document.querySelector('.endGameMessage');
+const endMessage = document.getElementsByClassName('.endGameMessage');
 
 // DATA
 const levels = [100, 81, 49];
