@@ -5,6 +5,7 @@ const levelSelect = document.getElementById('level');
 let grid = document.querySelector('.grid-container');
 let points = 0;
 const numBombs = 16;
+const endMessage = document.querySelector('.endGameMessage');
 
 // DATA
 const levels = [100, 81, 49];
@@ -53,21 +54,34 @@ function createSquare(index){
 
 function handleClick(){
   if(bombs.includes(this._sqID)){
-    endGame();
+    endGame(false);
   }else{
     this.classList.add('clicked');
     if(!this.classList.contains('clicked')){
       points++;
     }
     if(points === (squareNumbers - numBombs)){
-      endGame('WIN');
+      endGame(true);
     }
   }
 }
 
-function endGame(status){
+function endGame(isWin){
+  let message;
   showBombs();
-  
+  blockGrid();
+  if(isWin){
+    message = 'Hai Vinto!'
+  }else{
+    message = `Hai Perso! Punti: ${points} su ${squareNumbers - numBombs}`
+  }
+  endMessage.innerHTML = message;
+}
+
+function blockGrid(){
+  const endGameEl = document.createElement("div");
+  endGameEl.className = "end-game"; 
+  main.append(endGameEl);
 }
 
 function showBombs(){
@@ -82,4 +96,7 @@ function showBombs(){
 
 function reset(){
   main.innerHTML = '';
+  points = 0;
+  bombs = [];
+  endMessage.innerHTML = '';
 }
